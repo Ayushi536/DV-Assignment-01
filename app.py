@@ -67,17 +67,24 @@ fig, ax = plt.subplots(figsize=(10, 6))
 sns.heatmap(filtered_df.corr(), annot=True, cmap="coolwarm", ax=ax)
 st.pyplot(fig)
 
-st.subheader("⚠️ Misleading Diabetes Outcome Analysis")
-fig, ax = plt.subplots(figsize=(4, 4))
-sns.barplot(x='Outcome', y='Age', data=df, ax=ax)
-ax.set_ylim(25, 35)
-ax.set_title('Misleading Age vs Outcome (Truncated Y-Axis)')
-st.pyplot(fig)
 
-st.subheader("📊 Diabetes Outcome Analysis (Correct Scale)")
-fig, ax = plt.subplots(figsize=(4, 4))
-sns.countplot(x="Outcome", data=filtered_df, palette="viridis", ax=ax)
-st.pyplot(fig)
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader("⚠️ Misleading Visualization")
+    fig, ax = plt.subplots(figsize=(4.5, 3))
+    sns.barplot(x='Outcome', y='Age', data=df, ax=ax, palette='cool')
+    ax.set_ylim(25, 35)
+    ax.set_title('Misleading Age vs Outcome\n(Truncated Y-Axis)', fontsize=10)
+    st.pyplot(fig)
+
+with col2:
+    st.subheader("✅ Correct Visualization")
+    fig, ax = plt.subplots(figsize=(4.5, 3))
+    sns.barplot(x='Outcome', y='Age', data=df, ax=ax, palette='crest')
+    ax.set_title('Age vs Outcome (Full Scale)', fontsize=10)
+    st.pyplot(fig)
+
 
 st.subheader("📊 Box Plot for Glucose & Outcome Analysis")
 fig, ax = plt.subplots(figsize=(6, 3))
