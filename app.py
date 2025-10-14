@@ -73,7 +73,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("⚠️ Misleading Visualization")
     fig, ax = plt.subplots(figsize=(4.5, 3))
-    sns.barplot(x='Outcome', y='Age', data=df, ax=ax, palette='cool')
+    sns.barplot(x='Outcome', y='Age', data=filtered_df, ax=ax, palette='cool')
     ax.set_ylim(25, 35)
     ax.set_title('Misleading Age vs Outcome\n(Truncated Y-Axis)', fontsize=10)
     st.pyplot(fig)
@@ -81,21 +81,21 @@ with col1:
 with col2:
     st.subheader("✅ Correct Visualization")
     fig, ax = plt.subplots(figsize=(4.5, 3))
-    sns.barplot(x='Outcome', y='Age', data=df, ax=ax, palette='crest')
+    sns.barplot(x='Outcome', y='Age', data=filtered_df, ax=ax, palette='crest')
     ax.set_title('Age vs Outcome (Full Scale)', fontsize=10)
     st.pyplot(fig)
 
 
 st.subheader("📊 Box Plot for Glucose & Outcome Analysis")
 fig, ax = plt.subplots(figsize=(6, 3))
-sns.boxplot(x='Outcome', y='Glucose', data=df, ax=ax)
+sns.boxplot(x='Outcome', y='Glucose', data=filtered_df, ax=ax)
 ax.set_title('Glucose Levels by Diabetes Outcome')
 st.pyplot(fig)
 
 
 st.subheader("📊 Scatter Plot for Age & BMI Comparison")
 fig, ax = plt.subplots(figsize=(6, 3))
-sns.scatterplot(x='Age', y='BMI', hue='Outcome', data=df, ax=ax)
+sns.scatterplot(x='Age', y='BMI', hue='Outcome', data=filtered_df, ax=ax)
 ax.set_title('BMI vs Age with Diabetes Outcome')
 st.pyplot(fig)
 
