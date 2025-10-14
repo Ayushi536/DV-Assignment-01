@@ -11,7 +11,7 @@ def load_data():
 df = load_data()
 
 st.set_page_config(page_title="Diabetes Data Dashboard", layout="wide")
-st.title("📊 nteractive Diabetes Data Dashboard")
+st.title("📊 Interactive Diabetes Data Dashboard")
 st.markdown("Use the filters in the sidebar to explore the dataset interactively.")
 
 st.sidebar.header("🔍 Filter Data")
